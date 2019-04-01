@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Order</title>
 </head>
 <body>
 
@@ -12,55 +12,64 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="semantic/semantic.min.js"></script>
-<div class="ui grid">
-    <div class="column">
-        <form class="ui form" name="myForm" method="POST" onsubmit="mySubmit();">
-            <div class="field">
-                <label>Costumer Name</label>
-                <input type="text" name="name" placeholder="Name" required>
-            </div>
-            <div class="field">
-                <label>Number of Oranges</label>
-                <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
-                       required>
-            </div>
-            <div class="field">
-                <label>Number of Apples</label>
-                <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()" required>
-            </div>
-            <div class="field">
-                <label>Number of Bananas</label>
-                <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
-                       required>
-            </div>
-            <div class="field">
-                <label>Total Price(in cents)</label>
-                <input type="text" name="price" placeholder="Total Price" readonly onfocus="blurtotal()">
-            </div>
+<div class="ui main text container">
+    <h1 class="ui header">Order Form</h1>
+    <p>Fill your orders here</p>
+</div>
+<div class="ui vertical masthead segment">
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="column">
+                <form class="ui large form" name="myForm" method="POST" onsubmit="mySubmit();" action="receipt.php">
+                    <div class="field">
+                        <label>Costumer Name</label>
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="field">
+                        <label>Number of Oranges</label>
+                        <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
+                               required>
+                    </div>
+                    <div class="field">
+                        <label>Number of Apples</label>
+                        <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()"
+                               required>
+                    </div>
+                    <div class="field">
+                        <label>Number of Bananas</label>
+                        <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
+                               required>
+                    </div>
+                    <div class="field">
+                        <label>Total Price(in cents)</label>
+                        <input type="text" name="price" placeholder="Total Price" readonly onfocus="blurtotal()">
+                    </div>
 
-            <div class="inline fields">
-                <label>Payment methods:</label>
-                <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="card" tabindex="0" value="Visa" required>
-                        <label>Visa</label>
+                    <div class="inline fields">
+                        <label>Payment methods:</label>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="card" tabindex="0" value="Visa" required>
+                                <label><i class="cc visa icon"></i> Visa</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="card" tabindex="0" value="Mastercard" required>
+                                <label><i class="cc mastercard icon"></i>Mastercard</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="card" tabindex="0" value="Discover" required>
+                                <label><i class="cc discover icon"></i>Discover</label>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="card" tabindex="0" value="Mastercard" required>
-                        <label>Mastercard</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="card" tabindex="0" value="Discover" required>
-                        <label>Discover</label>
-                    </div>
-                </div>
+                    <button class="ui button" type="submit">Submit</button>
+                </form>
             </div>
-            <button class="ui button" type="submit">Submit</button>
-        </form>
+        </div>
     </div>
 </div>
 <script>
