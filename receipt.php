@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Receipt</title>
 </head>
 <body>
 <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
@@ -75,7 +75,17 @@
 	fwrite($file, $bananas_content);
 	fclose($file);
 ?>
-
+<div class="ui borderless inverted main menu">
+    <a class="active item">
+        Home
+    </a>
+    <a class="item">
+        Messages
+    </a>
+    <a class="item">
+        Friends
+    </a>
+</div>
 <div class="ui main text container">
     <div class="ui container">
         <div class="ui grid">
@@ -137,11 +147,17 @@
 </div>
 <div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
-<div class="ui stackable inverted divided grid">
-    <h4 class="ui inverted header">Created by Hans Tananda</h4>
-    <a href="index.php" class="item">Back to Home</a>
-</div>
-</div>
+        <a href="index.php" class="item">Back to Home</a>
+        <div class="ui inverted section divider"></div>
+        <img src="assets/images/logo.jpg" class="ui centered mini image">
+        <h4 class="ui inverted header">Created by Hans Tananda</h4>
+        <div class="ui horizontal inverted small divided link list">
+            <a class="item" href="#">Site Map</a>
+            <a class="item" href="#">Contact Us</a>
+            <a class="item" href="#">Terms and Conditions</a>
+            <a class="item" href="#">Privacy Policy</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>
