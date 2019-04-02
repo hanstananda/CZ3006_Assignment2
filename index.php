@@ -21,32 +21,34 @@
         <div class="ui grid">
             <div class="column">
                 <form class="ui large form" name="myForm" method="POST" onsubmit="mySubmit();" action="receipt.php">
-                    <div class="field">
+                    <div class="required field">
                         <label>Costumer Name</label>
                         <input type="text" name="name" placeholder="Name" required>
                     </div>
-                    <div class="field">
+                    <div class="required field" id="num-org-field">
                         <label>Number of Oranges</label>
                         <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
                                required>
                     </div>
-                    <div class="field">
+                    <div class="required field"  id="num-app-field">
                         <label>Number of Apples</label>
                         <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()"
                                required>
                     </div>
-                    <div class="field">
+                    <div class="required field"  id="num-ban-field">
                         <label>Number of Bananas</label>
                         <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
                                required>
                     </div>
-                    <div class="field">
+                    <div class="required field">
                         <label>Total Price(in cents)</label>
                         <input type="text" name="price" placeholder="Total Price" readonly onfocus="blurtotal()">
                     </div>
 
                     <div class="inline fields">
+                        <div class="required field">
                         <label>Payment methods:</label>
+                        </div>
                         <div class="field">
                             <div class="ui radio checkbox">
                                 <input type="radio" name="card" tabindex="0" value="Visa" required>
@@ -73,84 +75,88 @@
     </div>
 </div>
 <script>
+
+
     function blurtotal() {
         let total = document.querySelector('input[name="price"]').blur()
     }
 
     function calculateRes() {
-        var str_or = document.forms["myForm"]["num-oranges"].value;
-        var num_or = Number(str_or)
-        var str_ap = document.forms["myForm"]["num-apples"].value;
-        var num_ap = Number(str_ap)
-        var str_ban = document.forms["myForm"]["num-bananas"].value;
-        var num_ban = Number(str_ban)
-        if (str_or != "") {
-            if (!(Number.isInteger(num_or))) {
-                alert("number of oranges field must be an integer!")
-                return
-            }
-            if (num_or < 0) {
-                alert("number of oranges field must be larger than 0!")
-            }
-
+        const str_or = document.forms["myForm"]["num-oranges"].value;
+        let num_or = Number(str_or);
+        const str_ap = document.forms["myForm"]["num-apples"].value;
+        let num_ap = Number(str_ap);
+        const str_ban = document.forms["myForm"]["num-bananas"].value;
+        let num_ban = Number(str_ban);
+        const valid = validateForm();
+        console.log(valid);
+        if (!valid) {
+            document.forms["myForm"]["price"].value = "Invalid Input!"
         }
-        if (str_ap != "") {
-            if (!(Number.isInteger(num_ap))) {
-                alert("number of apples field must be an integer!")
-                return
-            }
-            if (num_ap < 0) {
-                alert("number of apples field must be larger than 0!")
-            }
+        else{
+            document.forms["myForm"]["price"].value = num_or * 59 + num_ap * 69 + num_ban * 39
         }
 
-        if (str_ban != "") {
-            if (!(Number.isInteger(num_ban))) {
-                alert("number of bananas field must be an integer!")
-                return
-            }
-            if (num_ban < 0) {
-                alert("number of bananas field must be larger than 0!")
-            }
-        }
-        document.forms["myForm"]["price"].value = num_or * 59 + num_ap * 69 + num_ban * 39
 
     }
 
     function validateForm() {
-        var str_or = document.forms["myForm"]["num-oranges"].value;
-        var num_or = Number(str_or)
-        var str_ap = document.forms["myForm"]["num-apples"].value;
-        var num_ap = Number(str_ap)
-        var str_ban = document.forms["myForm"]["num-bananas"].value;
-        var num_ban = Number(str_ban)
-        if (str_or != "") {
+        const str_or = document.forms["myForm"]["num-oranges"].value;
+        let num_or = Number(str_or);
+        const str_ap = document.forms["myForm"]["num-apples"].value;
+        let num_ap = Number(str_ap);
+        const str_ban = document.forms["myForm"]["num-bananas"].value;
+        let num_ban = Number(str_ban);
+        let org_valid = true;
+        let app_valid = true;
+        let ban_valid = true;
+        let cnt_valid = true;
+        if (str_or !== "") {
             if (!(Number.isInteger(num_or))) {
-                return false
+                org_valid = false
             }
-            if (num_or < 0) {
-                return false
+            else if (num_or < 0) {
+                org_valid = false
             }
-
         }
-        if (str_ap != "") {
+        if (str_ap !== "") {
             if (!(Number.isInteger(num_ap))) {
-                return false
+                app_valid = false
             }
             if (num_ap < 0) {
-                return false
+                app_valid = false
             }
         }
-
-        if (str_ban != "") {
+        if (str_ban !== "") {
             if (!(Number.isInteger(num_ban))) {
-                return false
+                ban_valid = false
             }
             if (num_ban < 0) {
-                return false
+                ban_valid = false
             }
         }
-        return true
+        if(org_valid){
+            document.getElementById("num-org-field").className="required field";
+        }
+        else{
+            document.getElementById("num-org-field").className="required error field";
+        }
+        if(app_valid){
+            document.getElementById("num-app-field").className="required field";
+        }
+        else{
+            document.getElementById("num-app-field").className="required error field";
+        }
+        if(ban_valid){
+            document.getElementById("num-ban-field").className="required field";
+        }
+        else{
+            document.getElementById("num-ban-field").className="required error field";
+        }
+        if(num_ap+num_ban+num_or<=0){
+            cnt_valid = false;
+        }
+        return org_valid & app_valid & ban_valid & cnt_valid
     }
 
     function mySubmit() {
