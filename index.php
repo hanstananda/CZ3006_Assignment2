@@ -26,16 +26,19 @@
                         <label>Number of Oranges</label>
                         <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
                                required>
+                        <p id="error-org"></p>
                     </div>
                     <div class="required field"  id="num-app-field">
                         <label>Number of Apples</label>
                         <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()"
                                required>
+                        <p id="error-app"></p>
                     </div>
                     <div class="required field"  id="num-ban-field">
                         <label>Number of Bananas</label>
                         <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
                                required>
+                        <p id="error-ban"></p>
                     </div>
                     <div class="required field">
                         <label>Total Price(in cents)</label>
@@ -65,6 +68,7 @@
                             </div>
                         </div>
                     </div>
+                        <p id="error-cnt"></p>
                     <button class="ui button" type="submit">Submit</button>
                 </form>
             </div>
@@ -109,48 +113,66 @@
         let cnt_valid = true;
         if (str_or !== "") {
             if (!(Number.isInteger(num_or))) {
+                document.getElementById("error-org").textContent = "Value must be an integer!";
                 org_valid = false
             }
             else if (num_or < 0) {
+                document.getElementById("error-org").textContent = "Value cannot be smaller than 0!";
                 org_valid = false
             }
         }
         if (str_ap !== "") {
             if (!(Number.isInteger(num_ap))) {
+                document.getElementById("error-app").textContent = "Value must be an integer!";
                 app_valid = false
             }
             if (num_ap < 0) {
+                document.getElementById("error-app").textContent = "Value cannot be smaller than 0!";
                 app_valid = false
             }
         }
         if (str_ban !== "") {
             if (!(Number.isInteger(num_ban))) {
+                document.getElementById("error-ban").textContent = "Value must be an integer!";
                 ban_valid = false
             }
             if (num_ban < 0) {
+                document.getElementById("error-ban").textContent = "Value cannot be smaller than 0!";
                 ban_valid = false
             }
         }
         if(org_valid){
             document.getElementById("num-org-field").className="required field";
+            document.getElementById("error-org").textContent = "";
         }
         else{
             document.getElementById("num-org-field").className="required error field";
         }
         if(app_valid){
             document.getElementById("num-app-field").className="required field";
+            document.getElementById("error-app").textContent = "";
         }
         else{
             document.getElementById("num-app-field").className="required error field";
         }
         if(ban_valid){
             document.getElementById("num-ban-field").className="required field";
+            document.getElementById("error-ban").textContent = "";
         }
         else{
             document.getElementById("num-ban-field").className="required error field";
         }
         if(num_ap+num_ban+num_or<=0){
+            if (org_valid & app_valid & ban_valid & str_or!== "" & str_ap !== "" & str_ban !== ""){
+                document.getElementById("num-org-field").className="required error field";
+                document.getElementById("num-app-field").className="required error field";
+                document.getElementById("num-ban-field").className="required error field";
+                document.getElementById("error-cnt").textContent = "At least one of the fields above must not equal to zero!";
+            }
             cnt_valid = false;
+        }
+        else{
+            document.getElementById("error-cnt").textContent = "";
         }
         return org_valid & app_valid & ban_valid & cnt_valid
     }
