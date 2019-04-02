@@ -76,20 +76,19 @@
 	fclose($file);
 ?>
 
-<div class="ui vertical masthead segment">
+<div class="ui main text container">
     <div class="ui container">
         <div class="ui grid">
             <div class="column">
                 <p>
                 <h2> Order Receipt </h2></p>
 				<?php print ("<strong>Customer Name :</strong> $name <br />"); ?>
-                <p></p>
 
                 <table class="ui large celled striped fixed table">
                     <caption><strong> Order Information </strong></caption>
                     <thead>
                     <tr>
-                        <th> &nbsp Product &nbsp</th>
+                        <th> Product </th>
                         <th> Unit Price</th>
                         <th> Quantity</th>
                         <th> Item Cost</th>
@@ -118,7 +117,7 @@
                         </td>
                     </tr>
                     <tr align="center">
-                        <td colspan="2"><i class="credit card icon"></i><strong> &nbsp Payment method: &nbsp </strong>
+                        <td colspan="2"><i class="credit card icon"></i><strong>Payment method: </strong>
                         </td>
                         <td colspan="2"> <?php printf($payment); ?>
                         </td>
@@ -135,6 +134,14 @@
             </div>
         </div>
     </div>
+</div>
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+<div class="ui stackable inverted divided grid">
+    <h4 class="ui inverted header">Created by Hans Tananda</h4>
+    <a href="index.php" class="item">Back to Home</a>
+</div>
+</div>
 </div>
 </body>
 </html>

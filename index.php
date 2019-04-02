@@ -15,9 +15,6 @@
 <div class="ui main text container">
     <h1 class="ui header">Order Form</h1>
     <p>Fill your orders here</p>
-</div>
-<div class="ui vertical masthead segment">
-    <div class="ui container">
         <div class="ui grid">
             <div class="column">
                 <form class="ui large form" name="myForm" method="POST" onsubmit="mySubmit();" action="receipt.php">
@@ -91,12 +88,11 @@
         const valid = validateForm();
         console.log(valid);
         if (!valid) {
-            document.forms["myForm"]["price"].value = "Invalid Input!"
+            document.forms["myForm"]["price"].value = "NaN"
         }
         else{
             document.forms["myForm"]["price"].value = num_or * 59 + num_ap * 69 + num_ban * 39
         }
-
 
     }
 
