@@ -12,67 +12,86 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="semantic/semantic.min.js"></script>
-<div class="ui main text container">
-    <h1 class="ui header">Order Form</h1>
-    <p>Fill your orders here</p>
-        <div class="ui grid">
-            <div class="column">
-                <form class="ui large form" name="myForm" method="POST" onsubmit="mySubmit();" action="receipt.php">
-                    <div class="required field">
-                        <label>Costumer Name</label>
-                        <input type="text" name="name" placeholder="Name" required>
-                    </div>
-                    <div class="required field" id="num-org-field">
-                        <label>Number of Oranges</label>
-                        <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
-                               required>
-                        <p id="error-org"></p>
-                    </div>
-                    <div class="required field"  id="num-app-field">
-                        <label>Number of Apples</label>
-                        <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()"
-                               required>
-                        <p id="error-app"></p>
-                    </div>
-                    <div class="required field"  id="num-ban-field">
-                        <label>Number of Bananas</label>
-                        <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
-                               required>
-                        <p id="error-ban"></p>
-                    </div>
-                    <div class="required field">
-                        <label>Total Price(in cents)</label>
-                        <input type="text" name="price" placeholder="Total Price" readonly onfocus="blurtotal()">
-                    </div>
-
-                    <div class="inline fields">
+<div class="ui fluid container" style="height:85vh">
+    <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
+        <a class="active item">
+            Orders
+        </a>
+        <a class="item" href="receipt.php">
+            Receipts
+        </a>
+    </div>
+    <div class="ui main text container">
+        <div class="ui container">
+            <p>
+            <h1 class="ui header">Order Form</h1></p>
+            <p>Fill your orders here</p>
+            <div class="ui grid">
+                <div class="column">
+                    <form class="ui large form" name="myForm" method="POST" onsubmit="mySubmit();" action="receipt.php">
                         <div class="required field">
-                        <label>Payment methods:</label>
+                            <label>Costumer Name</label>
+                            <input type="text" name="name" placeholder="Name" required>
                         </div>
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="card" tabindex="0" value="Visa" required>
-                                <label><i class="cc visa icon"></i> Visa</label>
+                        <div class="required field" id="num-org-field">
+                            <label>Number of Oranges</label>
+                            <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
+                                   required>
+                            <p id="error-org"></p>
+                        </div>
+                        <div class="required field"  id="num-app-field">
+                            <label>Number of Apples</label>
+                            <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()"
+                                   required>
+                            <p id="error-app"></p>
+                        </div>
+                        <div class="required field"  id="num-ban-field">
+                            <label>Number of Bananas</label>
+                            <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
+                                   required>
+                            <p id="error-ban"></p>
+                        </div>
+                        <div class="required field">
+                            <label>Total Price(in cents)</label>
+                            <input type="text" name="price" placeholder="Total Price" readonly onfocus="blurtotal()">
+                        </div>
+
+                        <div class="inline fields">
+                            <div class="required field">
+                                <label>Payment methods:</label>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="card" tabindex="0" value="Visa" required>
+                                    <label><i class="cc visa icon"></i> Visa</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="card" tabindex="0" value="Mastercard" required>
+                                    <label><i class="cc mastercard icon"></i>Mastercard</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="card" tabindex="0" value="Discover" required>
+                                    <label><i class="cc discover icon"></i>Discover</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="card" tabindex="0" value="Mastercard" required>
-                                <label><i class="cc mastercard icon"></i>Mastercard</label>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="card" tabindex="0" value="Discover" required>
-                                <label><i class="cc discover icon"></i>Discover</label>
-                            </div>
-                        </div>
-                    </div>
                         <p id="error-cnt"></p>
-                    <button class="ui button" type="submit">Submit</button>
-                </form>
+                        <button class="ui button" type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="ui inverted vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        <img src="assets/images/logo.jpg" class="ui centered mini image">
+        <h4 class="ui inverted header">Created by Hans Tananda</h4>
     </div>
 </div>
 <script>

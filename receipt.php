@@ -75,88 +75,81 @@
 	fwrite($file, $bananas_content);
 	fclose($file);
 ?>
-<div class="ui borderless inverted main menu">
-    <a class="active item">
-        Home
-    </a>
-    <a class="item">
-        Messages
-    </a>
-    <a class="item">
-        Friends
-    </a>
-</div>
-<div class="ui main text container">
-    <div class="ui container">
-        <div class="ui grid">
-            <div class="column">
-                <p>
-                <h2> Order Receipt </h2></p>
-				<?php print ("<strong>Customer Name :</strong> $name <br />"); ?>
+<div class="ui fluid container" style="height:85vh">
+    <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
+        <a class="item" href="index.php">
+            Orders
+        </a>
+        <a class="active item">
+            Receipts
+        </a>
+    </div>
+    <div class="ui main text container">
+        <div class="ui container">
+            <div class="ui grid">
+                <div class="column">
+                    <p>
+                    <h2> Order Receipt </h2></p>
+					<?php print ("<strong>Customer Name :</strong> $name <br />"); ?>
 
-                <table class="ui large celled striped fixed table">
-                    <caption><strong> Order Information </strong></caption>
-                    <thead>
-                    <tr>
-                        <th> Product </th>
-                        <th> Unit Price</th>
-                        <th> Quantity</th>
-                        <th> Item Cost</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr align="center">
-                        <td data-label="Product"> Apples</td>
-                        <td data-label="Unit Price"> ¢ 69</td>
-                        <td data-label="Quantity"> <?php print ("$apples"); ?> </td>
-                        <td data-label="Item Cost"> <?php printf("¢ %d", $apples_cost); ?>
-                        </td>
-                    </tr>
-                    <tr align="center">
-                        <td data-label="Product"> Oranges</td>
-                        <td data-label="Unit Price"> ¢ 59</td>
-                        <td data-label="Quantity"> <?php print ("$oranges"); ?> </td>
-                        <td data-label="Item Cost"> <?php printf("¢ %d", $oranges_cost); ?>
-                        </td>
-                    </tr>
-                    <tr align="center">
-                        <td data-label="Product"> Bananas</td>
-                        <td data-label="Unit Price"> ¢ 39</td>
-                        <td data-label="Quantity"> <?php print ("$bananas"); ?> </td>
-                        <td data-label="Item Cost"> <?php printf("¢ %d", $bananas_cost); ?>
-                        </td>
-                    </tr>
-                    <tr align="center">
-                        <td colspan="2"><i class="credit card icon"></i><strong>Payment method: </strong>
-                        </td>
-                        <td colspan="2"> <?php printf($payment); ?>
-                        </td>
-                    </tr>
-                    <tr align="center">
-                        <td colspan="2"><strong> Total : </strong>
-                        </td>
-                        <td colspan="2"> <?php printf("¢ %d", $total_cost); ?>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <p></p>
+                    <table class="ui large celled striped fixed table">
+                        <caption><strong> Order Information </strong></caption>
+                        <thead>
+                        <tr>
+                            <th> Product</th>
+                            <th> Unit Price</th>
+                            <th> Quantity</th>
+                            <th> Item Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr align="center">
+                            <td data-label="Product"> Apples</td>
+                            <td data-label="Unit Price"> ¢ 69</td>
+                            <td data-label="Quantity"> <?php print ("$apples"); ?> </td>
+                            <td data-label="Item Cost"> <?php printf("¢ %d", $apples_cost); ?>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td data-label="Product"> Oranges</td>
+                            <td data-label="Unit Price"> ¢ 59</td>
+                            <td data-label="Quantity"> <?php print ("$oranges"); ?> </td>
+                            <td data-label="Item Cost"> <?php printf("¢ %d", $oranges_cost); ?>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td data-label="Product"> Bananas</td>
+                            <td data-label="Unit Price"> ¢ 39</td>
+                            <td data-label="Quantity"> <?php print ("$bananas"); ?> </td>
+                            <td data-label="Item Cost"> <?php printf("¢ %d", $bananas_cost); ?>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td colspan="2"><i class="credit card icon"></i><strong>Payment method: </strong>
+                            </td>
+                            <td colspan="2"> <?php printf($payment); ?>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td colspan="2"><strong> Total : </strong>
+                            </td>
+                            <td colspan="2"> <?php printf("¢ %d", $total_cost); ?>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p></p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
-        <a href="index.php" class="item">Back to Home</a>
+        <h3><a href="index.php" class="item">Back to Orders</a></h3>
         <div class="ui inverted section divider"></div>
         <img src="assets/images/logo.jpg" class="ui centered mini image">
         <h4 class="ui inverted header">Created by Hans Tananda</h4>
-        <div class="ui horizontal inverted small divided link list">
-            <a class="item" href="#">Site Map</a>
-            <a class="item" href="#">Contact Us</a>
-            <a class="item" href="#">Terms and Conditions</a>
-            <a class="item" href="#">Privacy Policy</a>
-        </div>
     </div>
 </div>
 </body>
