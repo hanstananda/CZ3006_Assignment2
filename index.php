@@ -12,7 +12,7 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="semantic/semantic.min.js"></script>
-<div class="ui fluid container" style="height:130vh">
+<div class="ui fluid container" style="height:200vh">
     <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
         <a class="active item">
             Orders
@@ -34,18 +34,21 @@
                             <input type="text" name="name" placeholder="Name" required>
                         </div>
                         <div class="required field" id="num-org-field">
+                            <img src="assets/images/orange.png" class="ui tiny image">
                             <label>Number of Oranges</label>
                             <input type="text" name="num-oranges" placeholder="Number of Oranges" onchange="calculateRes()"
                                    required>
                             <p id="error-org"></p>
                         </div>
                         <div class="required field"  id="num-app-field">
+                            <img src="assets/images/apple.png" class="ui tiny image">
                             <label>Number of Apples</label>
                             <input type="text" name="num-apples" placeholder="Number of Apples" onchange="calculateRes()"
                                    required>
                             <p id="error-app"></p>
                         </div>
                         <div class="required field"  id="num-ban-field">
+                            <img src="assets/images/banana.png" class="ui tiny image">
                             <label>Number of Bananas</label>
                             <input type="text" name="num-bananas" placeholder="Number of Bananas" onchange="calculateRes()"
                                    required>

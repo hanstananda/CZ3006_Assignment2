@@ -75,7 +75,7 @@
 	fwrite($file, $bananas_content);
 	fclose($file);
 ?>
-<div class="ui fluid container" style="height:100vh">
+<div class="ui fluid container" style="height:150vh">
     <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
         <a class="item" href="index.php">
             Orders
@@ -104,21 +104,21 @@
                         </thead>
                         <tbody>
                         <tr align="center">
-                            <td data-label="Product"> Apples</td>
+                            <td data-label="Product"><img src="assets/images/apple.png" class="ui tiny image"> Apples</td>
                             <td data-label="Unit Price"> ¢ 69</td>
                             <td data-label="Quantity"> <?php print ("$apples"); ?> </td>
                             <td data-label="Item Cost"> <?php printf("¢ %d", $apples_cost); ?>
                             </td>
                         </tr>
                         <tr align="center">
-                            <td data-label="Product"> Oranges</td>
+                            <td data-label="Product"><img src="assets/images/orange.png" class="ui tiny image"> Oranges</td>
                             <td data-label="Unit Price"> ¢ 59</td>
                             <td data-label="Quantity"> <?php print ("$oranges"); ?> </td>
                             <td data-label="Item Cost"> <?php printf("¢ %d", $oranges_cost); ?>
                             </td>
                         </tr>
                         <tr align="center">
-                            <td data-label="Product"> Bananas</td>
+                            <td data-label="Product"> <img src="assets/images/banana.png" class="ui tiny image"> Bananas</td>
                             <td data-label="Unit Price"> ¢ 39</td>
                             <td data-label="Quantity"> <?php print ("$bananas"); ?> </td>
                             <td data-label="Item Cost"> <?php printf("¢ %d", $bananas_cost); ?>
