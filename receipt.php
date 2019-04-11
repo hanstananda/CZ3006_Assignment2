@@ -75,7 +75,7 @@
 	fwrite($file, $bananas_content);
 	fclose($file);
 ?>
-<div class="ui fluid container" style="height:85vh">
+<div class="ui fluid container" style="height:100vh">
     <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
         <a class="item" href="index.php">
             Orders
