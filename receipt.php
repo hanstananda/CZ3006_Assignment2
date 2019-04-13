@@ -41,15 +41,15 @@
 	$bananas_total = $num_bananas + (int)$bananas_prev;
 
 	//Create the content to be written back to the file
-	$apples_content = "Total number of apples: $apples_total\r\n";
-	$oranges_content = "Total number of oranges: $oranges_total\r\n";
-	$bananas_content = "Total number of bananas: $bananas_total\r\n";
+	$apples_file_content = "Total number of apples: $apples_total\r\n";
+	$oranges_file_content = "Total number of oranges: $oranges_total\r\n";
+	$bananas_file_content = "Total number of bananas: $bananas_total\r\n";
 
 	//writes back into the file
-	$file = fopen("order.txt", "w");
-	fwrite($file, $apples_content);
-	fwrite($file, $oranges_content);
-	fwrite($file, $bananas_content);
+	$file = fopen($file, "w");
+	fwrite($file, $apples_file_content);
+	fwrite($file, $oranges_file_content);
+	fwrite($file, $bananas_file_content);
 	fclose($file);
 ?>
 <div class="ui fluid container" style="height:150vh">
