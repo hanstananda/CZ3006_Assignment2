@@ -14,7 +14,7 @@
 <?php
 	// Get order data values
 	$name = $_POST["name"];
-	// Get the data and sanitize it, remove any non-digit characters by replacing it with ""
+    // Get the data and sanitize it, discard any non-digit characters
 	$num_apples = preg_replace("/[^0-9]/", "",$_POST["num-apples"]);
 	$num_oranges = preg_replace("/[^0-9]/", "",$_POST["num-oranges"]);
 	$num_bananas = preg_replace("/[^0-9]/", "",$_POST["num-bananas"]);
@@ -30,9 +30,9 @@
 	$total_cost = $apples_cost + $oranges_cost + $bananas_cost;
 	$file = 'order.txt';
 	//read the entire file and put it into an array
-	$file_content = file($file);
-	//replaces non-digit characters from input file to ""
-	$apples_prev = preg_replace("/[^0-9]/", "", $file_content[0]);
+    $file_content = file($file);
+    //Get only the digits from the file content, discard any non-digit characters
+    $apples_prev = preg_replace("/[^0-9]/", "", $file_content[0]);
 	$oranges_prev = preg_replace("/[^0-9]/", "", $file_content[1]);
 	$bananas_prev = preg_replace("/[^0-9]/", "", $file_content[2]);
 	//sums the existing value in the text file and the newly entered value
