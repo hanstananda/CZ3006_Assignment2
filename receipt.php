@@ -14,9 +14,10 @@
 <?php
 	// Get order data values
 	$name = $_POST["name"];
-	$num_apples = $_POST["num-apples"];
-	$num_oranges = $_POST["num-oranges"];
-	$num_bananas = $_POST["num-bananas"];
+	// Get the data and sanitize it, remove any non-digit characters by replacing it with ""
+	$num_apples = preg_replace("/[^0-9]/", "",$_POST["num-apples"]);
+	$num_oranges = preg_replace("/[^0-9]/", "",$_POST["num-oranges"]);
+	$num_bananas = preg_replace("/[^0-9]/", "",$_POST["num-bananas"]);
 	$payment_type = $_POST["card"];
 	// If any of the quantities are blank, set them to zero
 	if ($num_apples == "") $num_apples = 0;
@@ -28,43 +29,24 @@
 	$bananas_cost = 39 * $num_bananas;
 	$total_cost = $apples_cost + $oranges_cost + $bananas_cost;
 	$file = 'order.txt';
-	//checks if file exists
-	if (file_exists($file)) {
-		if ($fhandle = fopen($file, "r")) {
-			//tests if at EOF, break if at EOF
-			while (!feof($fhandle)) {
-				$contents[] = fgets($fhandle);
-			}
-			fclose($fhandle);
-		}
-	} else {
-		fopen($file, "c+");//create file if does not exist
-	}
-
-	//opens the file and read line by line
-	$myfile_line = file("order.txt");
-
-	//if it is an empty text file, fills every row with empty space to prevent error
-	for ($x = 0; $x <= 10; $x++) {
-		if (empty($myfile_line[$x]))
-			$myfile_line[$x] = " ";
-	}
-	//replaces anything which is not a number with "" line by line
-	$apples_cumulative = preg_replace("/[^0-9]/", "", $myfile_line[0]);
-	$oranges_cumulative = preg_replace("/[^0-9]/", "", $myfile_line[1]);
-	$bananas_cumulative = preg_replace("/[^0-9]/", "", $myfile_line[2]);
+	//read the entire file and put it into an array
+	$file_content = file($file);
+	//replaces non-digit characters from input file to ""
+	$apples_prev = preg_replace("/[^0-9]/", "", $file_content[0]);
+	$oranges_prev = preg_replace("/[^0-9]/", "", $file_content[1]);
+	$bananas_prev = preg_replace("/[^0-9]/", "", $file_content[2]);
 	//sums the existing value in the text file and the newly entered value
-	$apples_total = $num_apples + (int)$apples_cumulative;
-	$oranges_total = $num_oranges + (int)$oranges_cumulative;
-	$bananas_total = $num_bananas + (int)$bananas_cumulative;
+	$apples_total = $num_apples + (int)$apples_prev;
+	$oranges_total = $num_oranges + (int)$oranges_prev;
+	$bananas_total = $num_bananas + (int)$bananas_prev;
 
-	//contents to be written back to the file
+	//Create the content to be written back to the file
 	$apples_content = "Total number of apples: $apples_total\r\n";
 	$oranges_content = "Total number of oranges: $oranges_total\r\n";
 	$bananas_content = "Total number of bananas: $bananas_total\r\n";
 
 	//writes back into the file
-	$file = fopen("order.txt", "c");
+	$file = fopen("order.txt", "w");
 	fwrite($file, $apples_content);
 	fwrite($file, $oranges_content);
 	fwrite($file, $bananas_content);
