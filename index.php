@@ -105,24 +105,23 @@
     }
 
     function calculateRes() {
-        const str_or = document.forms["myForm"]["num-oranges"].value;
-        let num_or = Number(str_or);
-        const str_ap = document.forms["myForm"]["num-apples"].value;
-        let num_ap = Number(str_ap);
-        const str_ban = document.forms["myForm"]["num-bananas"].value;
-        let num_ban = Number(str_ban);
         const valid = validateForm();
-        console.log(valid);
+        //console.log(valid);
         if (!valid) {
             document.forms["myForm"]["price"].value = "NaN"
         }
         else{
+            const str_or = document.forms["myForm"]["num-oranges"].value;
+            let num_or = Number(str_or);
+            const str_ap = document.forms["myForm"]["num-apples"].value;
+            let num_ap = Number(str_ap);
+            const str_ban = document.forms["myForm"]["num-bananas"].value;
+            let num_ban = Number(str_ban);
             document.forms["myForm"]["price"].value = num_or * 59 + num_ap * 69 + num_ban * 39
         }
-
     }
 
-    function validateForm() {
+    function validateForm(submit=false) {
         const str_or = document.forms["myForm"]["num-oranges"].value;
         let num_or = Number(str_or);
         const str_ap = document.forms["myForm"]["num-apples"].value;
@@ -133,6 +132,7 @@
         let app_valid = true;
         let ban_valid = true;
         let cnt_valid = true;
+        let empty = false;
         if (str_or !== "") {
             if (!(Number.isInteger(num_or))) {
                 document.getElementById("error-org").textContent = "Value must be an integer!";
@@ -142,6 +142,8 @@
                 document.getElementById("error-org").textContent = "Value cannot be smaller than 0!";
                 org_valid = false
             }
+        } else {
+            empty = true;
         }
         if (str_ap !== "") {
             if (!(Number.isInteger(num_ap))) {
@@ -152,6 +154,8 @@
                 document.getElementById("error-app").textContent = "Value cannot be smaller than 0!";
                 app_valid = false
             }
+        } else {
+            empty = true;
         }
         if (str_ban !== "") {
             if (!(Number.isInteger(num_ban))) {
@@ -162,6 +166,8 @@
                 document.getElementById("error-ban").textContent = "Value cannot be smaller than 0!";
                 ban_valid = false
             }
+        } else {
+            empty = true;
         }
         if(org_valid){
             document.getElementById("num-org-field").className="required field";
@@ -196,11 +202,14 @@
         else{
             document.getElementById("error-cnt").textContent = "";
         }
+        if (submit){
+            return org_valid & app_valid & ban_valid & cnt_valid & !empty
+        }
         return org_valid & app_valid & ban_valid & cnt_valid
     }
 
     function mySubmit() {
-        const valid = validateForm();
+        const valid = validateForm(true);
         if (!valid) {
             event.preventDefault()
         }
