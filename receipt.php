@@ -14,24 +14,19 @@
 <?php
 	// Get order data values
 	$name = $_POST["name"];
-	$apples = $_POST["num-apples"];
-	$oranges = $_POST["num-oranges"];
-	$bananas = $_POST["num-bananas"];
-	$payment = $_POST["card"];
+	$num_apples = $_POST["num-apples"];
+	$num_oranges = $_POST["num-oranges"];
+	$num_bananas = $_POST["num-bananas"];
+	$payment_type = $_POST["card"];
 	// If any of the quantities are blank, set them to zero
-	if ($apples == "") $apples = 0;
-	if ($oranges == "") $oranges = 0;
-	if ($bananas == "") $bananas = 0;
+	if ($num_apples == "") $num_apples = 0;
+	if ($num_oranges == "") $num_oranges = 0;
+	if ($num_bananas == "") $num_bananas = 0;
 	// Compute item costs and total cost
-	$apples_cost = 69 * $apples;
-	$oranges_cost = 59 * $oranges;
-	$bananas_cost = 39 * $bananas;
+	$apples_cost = 69 * $num_apples;
+	$oranges_cost = 59 * $num_oranges;
+	$bananas_cost = 39 * $num_bananas;
 	$total_cost = $apples_cost + $oranges_cost + $bananas_cost;
-?>
-<?php
-	$apple = $_POST["num-apples"];
-	$orange = $_POST["num-oranges"];
-	$banana = $_POST["num-bananas"];
 	$file = 'order.txt';
 	//checks if file exists
 	if (file_exists($file)) {
@@ -59,9 +54,9 @@
 	$oranges_cumulative = preg_replace("/[^0-9]/", "", $myfile_line[1]);
 	$bananas_cumulative = preg_replace("/[^0-9]/", "", $myfile_line[2]);
 	//sums the existing value in the text file and the newly entered value
-	$apples_total = $apple + (int)$apples_cumulative;
-	$oranges_total = $orange + (int)$oranges_cumulative;
-	$bananas_total = $banana + (int)$bananas_cumulative;
+	$apples_total = $num_apples + (int)$apples_cumulative;
+	$oranges_total = $num_oranges + (int)$oranges_cumulative;
+	$bananas_total = $num_bananas + (int)$bananas_cumulative;
 
 	//contents to be written back to the file
 	$apples_content = "Total number of apples: $apples_total\r\n";
@@ -106,28 +101,28 @@
                         <tr align="center">
                             <td data-label="Product"><img src="assets/images/apple.png" class="ui tiny image"> Apples</td>
                             <td data-label="Unit Price"> ¢ 69</td>
-                            <td data-label="Quantity"> <?php print ("$apples"); ?> </td>
+                            <td data-label="Quantity"> <?php print ("$num_apples"); ?> </td>
                             <td data-label="Item Cost"> <?php printf("¢ %d", $apples_cost); ?>
                             </td>
                         </tr>
                         <tr align="center">
                             <td data-label="Product"><img src="assets/images/orange.png" class="ui tiny image"> Oranges</td>
                             <td data-label="Unit Price"> ¢ 59</td>
-                            <td data-label="Quantity"> <?php print ("$oranges"); ?> </td>
+                            <td data-label="Quantity"> <?php print ("$num_oranges"); ?> </td>
                             <td data-label="Item Cost"> <?php printf("¢ %d", $oranges_cost); ?>
                             </td>
                         </tr>
                         <tr align="center">
                             <td data-label="Product"> <img src="assets/images/banana.png" class="ui tiny image"> Bananas</td>
                             <td data-label="Unit Price"> ¢ 39</td>
-                            <td data-label="Quantity"> <?php print ("$bananas"); ?> </td>
+                            <td data-label="Quantity"> <?php print ("$num_bananas"); ?> </td>
                             <td data-label="Item Cost"> <?php printf("¢ %d", $bananas_cost); ?>
                             </td>
                         </tr>
                         <tr align="center">
                             <td colspan="2"><i class="credit card icon"></i><strong>Payment method: </strong>
                             </td>
-                            <td colspan="2"> <?php printf($payment); ?>
+                            <td colspan="2"> <?php printf($payment_type); ?>
                             </td>
                         </tr>
                         <tr align="center">
