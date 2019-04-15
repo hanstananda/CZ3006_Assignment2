@@ -12,7 +12,7 @@
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="semantic/semantic.min.js"></script>
-<div class="ui fluid container" style="height:200vh">
+<div class="ui fluid container" style="min-height:100vh">
     <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
         <a class="active item">
             Orders

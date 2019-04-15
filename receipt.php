@@ -52,7 +52,7 @@
 	fwrite($file, $bananas_file_content);
 	fclose($file);
 ?>
-<div class="ui fluid container" style="height:150vh">
+<div class="ui fluid container" style="min-height:100vh">
     <div class="ui borderless inverted main menu" style="margin: 0;border-radius: 0;">
         <a class="item" href="index.php">
             Orders
